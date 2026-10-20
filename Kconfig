@@ -159,6 +159,13 @@ config PMW3610_AUTOMOUSE_TIMEOUT_MS
   int "Amount of milliseconds the mouse layer will be active after using the trackball"
   default 400
 
+config PMW3610_AUTOMOUSE_MIN_MOVE
+  int "Minimum movement (|x|+|y|, after divisor) required to activate the automouse layer"
+  default 3
+  help
+    Sensor interrupts caused by vibration usually report zero or very small
+    motion. Raise this value if the mouse layer is still triggered by typing.
+
 module = PMW3610
 module-str = PMW3610
 source "${ZEPHYR_BASE}/subsys/logging/Kconfig.template.log_config"
